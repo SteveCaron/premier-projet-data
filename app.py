@@ -40,5 +40,25 @@ db_user="root"
 db_password="example"
 db_database="exercice"
 
+#on se connecte à la base de données une connexion est un appel à la base de données.
 con=se_connecter_db(db_host, db_user, db_password, db_database)
 
+#un curseur ou pointeur qui va se placer sur la table.
+curseur = con.cursor()
+
+#On creer une requete sql pour ajouter les clients
+#Je creer un template, un schéma
+sql = "INSERT INTO clients (id, prenom, nom, email, profession, pays, ville) VALUES(%s, %s, %s, %s, %s, %s, %s)"
+
+
+
+#On rempli le template avec les informations du csv
+curseur.execute(sql, (7899, "Doe", "John", "john@test.fr", "pecheur", "France", "Lorient" ))
+
+#On pousse les information
+con.commit()
+
+#On ferme la connexion
+con.close()
+
+#il suffira de lier ensuite le csv avec la requete à l'aide de python.
