@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+
+#Pas la version du logiciel mais la version du language.
+version: '3.1'
+
+services:                                                             #Liste des logiciel à installer
+  db:                                                                 #nom du service : nom de la configuration
+    image: mariadb:10.11                                              #Précise la version de mariadb qu'on utilise, pas la 11 car pas stable.
+    restart: unless-stopped                                           #Si plante, alors redemarre. Sauf si une l'utilisateur stop le contener
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MYSQL_USER: utilisateur
+      MYSQL_PASSWORD: utilisateur
+      MYSQL_DATABASE: exemple                                         #Nom de la base de donnée
+    volumes:
+        - ./sql/install.sql:/docker-entrypoint-initdb.d/setup.sql     #va chercher le fichier dans le répertoire et le lance sur la BDD. (il configure la BDD sur mariaDB)
+    ports:
+      - 3306:3306                                                     #port permet de se connecter via internet au logiciel qui a le port intel. (port que maria db demande par default)
+
+
+#Telecharge un autre logiciel
+  adminer:                                                            #Interface graphique pour les base de données.
+    image: adminer:4.8.1
+    restart: always
+    ports:
+      - 8080:8080
