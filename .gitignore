@@ -1,0 +1,4 @@
+# Liste tous les fichier et repertoire à ne pas enregistrer dans github
+
+#Mon repertoire virtuel
+.venv
