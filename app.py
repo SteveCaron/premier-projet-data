@@ -72,5 +72,3 @@ if __name__ == "__main__":
     
     # on ajoute un client
     ajouter_client(cnx, table_clients)
-
-    #Test
