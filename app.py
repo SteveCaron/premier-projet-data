@@ -1,5 +1,5 @@
 import pandas as p
-import pymysql as maria
+import pymysql as maria         #pymsql est le connecteur qui va me permettre d'utiliser ma base de données.
 from pymysql.connections import Connection
 
 
