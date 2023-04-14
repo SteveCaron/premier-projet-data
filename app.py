@@ -68,7 +68,9 @@ if __name__ == "__main__":
     table_clients = lire_csv("clients.csv")
     
     # on se connecte à la base de données. C'est comme lancer un appel téléphonique
-    cnx = se_connecter_db(db_host, db_user, db_password, db_database)
+    # cnx = se_connecter_db(db_host, db_user, db_password, db_database)
     
     # on ajoute un client
-    ajouter_client(cnx, table_clients)
+    # ajouter_client(cnx, table_clients)
+
+
